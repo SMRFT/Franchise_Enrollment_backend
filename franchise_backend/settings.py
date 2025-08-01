@@ -85,7 +85,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'franchise',  
-
+        'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': os.getenv("GLOBAL_DB_HOST"),
         
