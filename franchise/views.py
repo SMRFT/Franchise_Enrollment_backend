@@ -51,7 +51,7 @@ def register_franchise(request):
     franchise_photo_file = request.FILES.get('franchise_photo')
     user_id = request.auth_metadata.get('auth-user-id')
     # MongoDB connection
-    mongo_url = os.getenv("MONGO_URL")
+    mongo_url = os.getenv("GLOBAL_DB_HOST")
     client = MongoClient(mongo_url)
     db = client["franchise"]
     fs = gridfs.GridFS(db)
@@ -175,7 +175,7 @@ def reset_password_form(request):
         })
     
     # Validate token first
-    mongo_url = os.getenv("MONGO_URL")
+    mongo_url = os.getenv("GLOBAL_DB_HOST")
     client = MongoClient(mongo_url)
     db = client["franchise"]
     franchise_user_collection = db["franchise_user"]
@@ -230,7 +230,7 @@ def reset_franchise_password(request):
             messages.error(request, 'Password must be at least 8 characters long')
             return redirect(f'/franchise/reset-password?token={token}&franchise_id={franchise_id}')
 
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         user_collection = db["franchise_user"]
@@ -299,7 +299,7 @@ def validate_reset_token(request):
         }, status=status.HTTP_400_BAD_REQUEST)
     
     # MongoDB connection
-    mongo_url = os.getenv("MONGO_URL")
+    mongo_url = os.getenv("GLOBAL_DB_HOST")
     client = MongoClient(mongo_url)
     db = client["franchise"]
     franchise_user_collection = db["franchise_user"]
@@ -348,7 +348,7 @@ def get_registered_franchise(request):
 @permission_classes([HasRolePermission])
 def get_inactive_franchise_locations(request):
     try:
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
 
@@ -383,7 +383,7 @@ def get_inactive_franchise_locations(request):
 @permission_classes([HasRolePermission])
 def get_all_franchise_locations(request):
     try:
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         collection = db["franchise_location_details"]
@@ -413,7 +413,7 @@ def get_file(request, file_id):
     """
     try:
         # MongoDB connection
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         fs = gridfs.GridFS(db)
@@ -443,7 +443,7 @@ def get_file(request, file_id):
 def update_franchise_status(request, location_id):
     try:
         # Connect to MongoDB
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         collection = db["franchise_location_details"]
@@ -480,7 +480,7 @@ def update_franchise_status(request, location_id):
 @permission_classes([HasRolePermission])
 def toggle_franchise_status(request, franchise_id):
     try:
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         collection = db["franchise_franchise"]
@@ -569,7 +569,7 @@ def update_franchise(request, franchise_id):
     """
     try:
         # 1) Connect to MongoDB
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         collection = db["franchise_franchise"]
@@ -722,7 +722,7 @@ import os
 @permission_classes([HasRolePermission])
 def update_barcode_status(request, barcode_id):
     try:
-        mongo_url = os.getenv("MONGO_URL")
+        mongo_url = os.getenv("GLOBAL_DB_HOST")
         client = MongoClient(mongo_url)
         db = client["franchise"]
         collection = db["franchise_barcoderange"]
