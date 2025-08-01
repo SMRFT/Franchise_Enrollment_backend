@@ -133,7 +133,7 @@ def send_franchise_welcome_email(email, franchise_id, reset_token, franchise_nam
     """Send welcome email with password reset link"""
     try:
         # Create password reset link
-        reset_link = f"{os.getenv('FRONTEND_URL', 'http://127.0.0.1:8000')}/franchise/reset-password?token={reset_token}&franchise_id={franchise_id}"
+        reset_link = f"{os.getenv('FRONTEND_URL', 'test.shinova.in')}/franchise/reset-password?token={reset_token}&franchise_id={franchise_id}"
         
         # Email context
         context = {
