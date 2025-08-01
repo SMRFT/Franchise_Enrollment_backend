@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'franchise_backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
+MONGO_URL = os.getenv("GLOBAL_DB_HOST")
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -89,12 +93,9 @@ DATABASES = {
     }
 }
 
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
 
-MONGO_URL = os.getenv("GLOBAL_DB_HOST")
+
 
 
 # Password validation
