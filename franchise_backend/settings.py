@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'franchise',  
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': os.getenv('MONGO_URL'),
+            'host': os.getenv('GLOBAL_DB_HOST'),
             'authMechanism': 'SCRAM-SHA-1',
         }
     }
@@ -94,7 +94,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-MONGO_URL = os.getenv("MONGO_URL")
+MONGO_URL = os.getenv("GLOBAL_DB_HOST")
 
 
 # Password validation
