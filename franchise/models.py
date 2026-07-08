@@ -110,30 +110,30 @@ class barcodestock(models.Model):
 
         super().save(*args, **kwargs)
 
-from bson import ObjectId
-from django.db import models
+# from bson import ObjectId
+# from django.db import models
 
-class Wallet(models.Model):
-    wallet_id = models.CharField(primary_key=True, max_length=50, default=lambda: str(ObjectId()))
+# class Wallet(models.Model):
+#     wallet_id = models.CharField(primary_key=True, max_length=50, default=lambda: str(ObjectId()))
     
-    franchise = models.OneToOneField(  # One wallet per franchise
-        'Franchise',
-        on_delete=models.CASCADE,
-        related_name='wallet'
-    )
+#     franchise = models.OneToOneField(  # One wallet per franchise
+#         'Franchise',
+#         on_delete=models.CASCADE,
+#         related_name='wallet'
+#     )
     
-    balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
-    currency = models.CharField(max_length=10, default='INR')  # Removed unique
-    status = models.CharField(
-        max_length=20,
-        choices=[('active', 'Active'), ('inactive', 'Inactive')],
-        default='active'
-    )
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+#     balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
+#     currency = models.CharField(max_length=10, default='INR')  # Removed unique
+#     status = models.CharField(
+#         max_length=20,
+#         choices=[('active', 'Active'), ('inactive', 'Inactive')],
+#         default='active'
+#     )
+#     created = models.DateTimeField(auto_now_add=True)
+#     updated = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return f"Wallet for {self.franchise.franchise_name} - ₹{self.balance}"
+#     def __str__(self):
+#         return f"Wallet for {self.franchise.franchise_name} - ₹{self.balance}"
 
 
 class Payments(models.Model):
