@@ -81,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'franchise',  
- 
+        'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': os.getenv('MONGO_URL'),
      
