@@ -1,0 +1,43 @@
+
+# Python cache files
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+
+venv/
+env/
+.venv/
+
+# Environment variables
+
+.env
+
+# Node modules (if frontend exists)
+
+node_modules/
+*/node_modules/
+
+# Django specific
+
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+
+.vscode/
+.idea/
+
+# Migrations cache (optional cleanup)
+
+*/migrations/**pycache**/
