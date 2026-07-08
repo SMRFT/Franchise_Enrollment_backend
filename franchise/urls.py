@@ -25,7 +25,7 @@ urlpatterns = [
     path('update-test-status/', views.update_test_status, name='update_test_status'),
     path('update_cancel_status/', views.update_cancel_status, name='update_cancel_status'),
     path('monthend/', views.month_end_calculation, name='month_end_calculation'),
-    path('post_loaction/', views.post_loaction, name='post_loaction'),
+    path('post_loaction/', views.post_location, name='post_loaction'),
     path('getandupdatebarcode/', views.getandupdatebarcode, name='getandupdatebarcode'),
 
 

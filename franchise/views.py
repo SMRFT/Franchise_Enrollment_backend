@@ -1589,7 +1589,7 @@ def generate_next_location_id():
 
 
 @api_view(['POST'])
-def post_loaction(request):
+def post_location(request):
     serializer = FranchiseLocationSerializer(data=request.data)
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
